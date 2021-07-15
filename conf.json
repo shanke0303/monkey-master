@@ -10,5 +10,24 @@
   "sckey": "",
   "bark": "",
   "autoReserve": true,
-  "openQrInNewWindow": false
+  "openQrInNewWindow": false,
+  "run_js_config": "// bash cmd: denon run. Run and Read config from conf.json",
+  "skuids_tips": "// 抢购skuid[*件数]，sku可以是多个，以逗号(,)分割，如中括号里所示，输入不需要带括号：[100016691566,100015521042*3]",
+  "skuids": "12614173855",
+  "mode_tips": "// 运行模式: 1-有货下单, 2-按时下单, 3-提前秒杀, 默认为1",
+  "mode": "2",
+  "mode_1_tips": "// [有货下单]配置",
+  "mode_1": {
+    "interval_tips": "// 设置库存监控间隔最大时间, 系统将在此时间内随机刷新 单位秒",
+    "interval": 5
+  },
+  "mode_2_tips": "// [按时下单]配置",
+  "mode_2": {
+    "orderType_tips": "// 下单方式，1: 京东 web, 2: 京东金融 APP",
+    "orderType": "1",
+    "toMode1_tips": "// 是否立即运行有货下单模式进行捡漏",
+    "toMode1": false
+  },
+  "orderTime_tips": "// [按时下单]和[提前秒杀]的抢购开始时间, 格式为 yyyy-MM-dd HH:mm:ss.SSS",
+  "orderTime": "2021-07-15 22:00:00.000"
 }
