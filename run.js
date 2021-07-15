@@ -1,6 +1,8 @@
 import MonkeyMaster from './main.js';
 import loadJsonFile from 'https://deno.land/x/load_json_file@v1.0.0/mod.ts';
 
+console.log('Deno.args:', Deno.args);
+
 const CONFIG = await loadJsonFile('conf.json');
 
 const sendNotify = async function(text, desp, params = {}) {
