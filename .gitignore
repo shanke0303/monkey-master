@@ -4,3 +4,4 @@ conf.json
 cookies/
 qrcode.png
 .idea/
+.DS_Store
