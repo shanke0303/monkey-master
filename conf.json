@@ -8,6 +8,7 @@
   },
   "userPath": "./cookies/",
   "sckey": "",
+  "bark": "",
   "autoReserve": true,
   "openQrInNewWindow": false
 }

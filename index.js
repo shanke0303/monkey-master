@@ -3,6 +3,20 @@ import loadJsonFile from 'https://deno.land/x/load_json_file@v1.0.0/mod.ts';
 
 const CONFIG = await loadJsonFile('conf.json');
 
+const sendNotify = async function(text, desp, params = {}) {
+    if (CONFIG.bark) {
+        await fetch(
+            `https://api.day.app/${CONFIG.bark}/${encodeURIComponent(text)}/${encodeURIComponent(desp)}?sound=shake&${querystring.stringify(params)}`
+        );
+    }
+
+    if (CONFIG.sckey) { 
+        await fetch(
+            `https://sc.ftqq.com/${CONFIG.sckey}.send?text=${text}&desp=${desp}`
+        );
+    }
+}
+
 let skuids = prompt(
     '输入抢购skuid[*件数]，sku可以是多个，以逗号(,)分割，如中括号里所示，输入不需要带括号：',
     '100016691566, 100015521042*3'
@@ -37,9 +51,7 @@ switch (mode) {
             skuids.length > 1 ? 'buyMultiSkusInStock' : 'buySingleSkuInStock';
 
         if (await ins[buyFunc](interval)) {
-            await fetch(
-                `https://sc.ftqq.com/${CONFIG.sckey}.send?text=Yes, you got it 🍌🍌🍌🍌🍌`
-            );
+            await sendNotify('Yes, you got it 🍌🍌🍌🍌🍌');
             Deno.exit();
         }
 
@@ -74,9 +86,7 @@ switch (mode) {
             prompt('输入抢购开始时间, 格式为 yyyy-MM-dd HH:mm:ss.SSS');
 
         if (await ins.seckillOnTime(secKillTime)) {
-            await fetch(
-                `https://sc.ftqq.com/${CONFIG.sckey}.send?text=Yes, you got it 🍌🍌🍌🍌🍌`
-            );
+            await sendNotify('Yes, you got it 🍌🍌🍌🍌🍌');
         }
 
         break;
